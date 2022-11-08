@@ -5,9 +5,7 @@ import '../styles/Card.css';
 
 export default class NewUser extends React.Component {
   state = {
-    form:{
-      "email":""
-    },
+    email: "",
     error:false,
     errorMsg:""
   }
@@ -15,7 +13,7 @@ export default class NewUser extends React.Component {
   handleChange = async event => {
      await this.setState({ 
       form: {
-        ...this.state.form,
+        ...this.state.email,
         [event.target.name]: event.target.value
       }
     });
@@ -24,7 +22,7 @@ export default class NewUser extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`http://localhost:8080/users/add`,  this.state.form)
+    axios.post(`http://localhost:8080/users/add`,  this.state.email)
       .then(res => {
         console.log(res);
         console.log(res.data);
