@@ -31,12 +31,17 @@ export default class NewUser extends React.Component {
   render() {
     return (
       <div className='card'>
-        <h1 className='title'>ESCIHU WIZARDS</h1>
+        <h1 className='title'>Bienvenido <br />ESCIHU WIZARDS</h1>
         <img src={logo} alt="Logo Escihu Wizards" className='logo'/>
         <p className='text-info'>Coloca el correo de tu cuenta de Github</p>
         <form onSubmit={this.handleSubmit} className="formData">
           <label>
-            <input type="text" name="name" onChange={this.handleChange} className='input' />
+            <input 
+                type="text" 
+                name="name" 
+                onChange={this.handleChange} 
+                className='input' 
+                placeholder='example@example.com'/>
           </label>
           <button type="submit" className='send'> Ingresar</button>
         </form>
