@@ -1,30 +1,46 @@
 import React from 'react';
+import axios from 'axios';
+import logo from '../assets/Logo.png';
 import '../styles/Card.css';
 
-function Testimonio(){
-    return(
+export default class NewUser extends React.Component {
+  state = {
+    name: '',
+  }
 
-        // <React.Fragment>
-        <div className="card">
-            
-            <img
-                className='logo-escihu' 
-                src={require('../assets/logo.gif')} 
-                alt='logo' 
-            />
-            <h3 className='text-info'>Ingresa a la organización</h3>
-            <h2 className='title'>ESCIHU-GEEKS</h2>
-            <p className='text-info'>Ingresa tu usuario de Github sin @</p>
-            <input
-                className='email' 
-                type="email" 
-                required
-            />
-            <button className='send' type="submit" onClick={() => alert('Hola')}>Ingresar</button>
+  handleChange = event => {
+    this.setState({ name: event.target.value });
+  }
 
-        </div>
-        // </React.Fragment>
-    );
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+      name: this.state.name
+    };
+
+    axios.post(`http://localhost:8080/users/add`, {
+        user: user.value
+     })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+  }
+
+  render() {
+    return (
+      <div className='card'>
+        <h1 className='title'>ESCIHU WIZARDS</h1>
+        <img src={logo} alt="Logo Escihu Wizards" className='logo'/>
+        <p className='text-info'>Coloca el correo de tu cuenta de Github</p>
+        <form onSubmit={this.handleSubmit} className="formData">
+          <label>
+            <input type="text" name="name" onChange={this.handleChange} className='input' />
+          </label>
+          <button type="submit" className='send'> Ingresar</button>
+        </form>
+      </div>
+    )
+  }
 }
-
-export default Testimonio;

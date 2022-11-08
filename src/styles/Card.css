@@ -9,24 +9,37 @@
     
 @media screen and(max-width: 558px) {
     .card{
-        width: 700px;
+        width: 400px;
     }   
 }
 
-.logo-escihu{
+.logo{
     width: 100px;
     border-radius: 5px;
     box-shadow: 0 0 20px rgba(141, 141, 141, 0.5);
+    animation: move 5s infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translatey(0);
+    }
+    50% {
+        transform: translatey(-10px);
+    }
+    100% {
+        transform: translatey(0);
+    }
 }
 
 .title{
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 600;
     margin: 10px 0;
 }
 
 .text-info{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 400;
     margin: 10px 0;
 }
