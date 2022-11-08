@@ -22,7 +22,7 @@ export default class NewUser extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`http://localhost:8080/users/add`,  this.state.email)
+    axios.post(`https://github-restclient.herokuapp.com/users/add`,  this.state.email)
       .then(res => {
         console.log(res);
         console.log(res.data);
